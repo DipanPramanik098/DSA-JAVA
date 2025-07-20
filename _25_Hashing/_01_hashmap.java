@@ -21,5 +21,12 @@ public class _01_hashmap {
         // remove
         hm.remove("A");
         System.out.println(hm);
+        // size
+        System.out.println(hm.size());
+        // isEmpty
+        System.out.println(hm.isEmpty());
+
+        // clear
+        hm.clear();
     }    
 }

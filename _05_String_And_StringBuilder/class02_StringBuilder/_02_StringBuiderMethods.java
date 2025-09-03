@@ -1,3 +1,4 @@
+package _05_String_And_StringBuilder.class02_StringBuilder;
 public class _02_StringBuiderMethods {
     public static void main(String[] args) {
         // Create a StringBuilder

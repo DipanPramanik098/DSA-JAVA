@@ -1,0 +1,158 @@
+📌 Time Complexity in Arrays
+
+Time complexity tells us how the running time of an algorithm grows with respect to the input size (here, the size of the array = n).
+We usually analyze best case, average case, and worst case, but in array problems we focus more on worst case.
+
+🔹 1. Accessing an Element
+
+👉 Operation: Get the element at index i in array arr[i].
+
+Reasoning: Arrays are stored in contiguous memory. So the address of element i can be calculated directly:
+
+Address(arr[i]) = Base_Address + i * Size_of_Element
+
+
+Time Complexity:
+
+Best Case = Worst Case = O(1)
+
+✅ Example:
+
+int[] arr = {10, 20, 30, 40, 50};
+System.out.println(arr[3]);  // Accessing 40
+
+
+Always constant time.
+
+🔹 2. Traversal (Visiting All Elements)
+
+👉 Operation: Print or sum all elements.
+
+Reasoning: You must visit each element one by one.
+
+Time Complexity: O(n)
+
+✅ Example:
+
+for (int i = 0; i < arr.length; i++) {
+    System.out.print(arr[i] + " ");
+}
+
+
+Requires n iterations → O(n)
+
+🔹 3. Searching in Array
+
+Two types:
+
+(a) Linear Search
+
+👉 Traverse until element is found.
+
+Best Case: O(1) (if element is at first index)
+
+Worst Case: O(n) (if element is at last index / not present)
+
+Average Case: O(n/2) → O(n)
+
+✅ Example:
+
+int search(int[] arr, int key) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == key) return i; 
+    }
+    return -1;
+}
+
+(b) Binary Search (only for sorted arrays)
+
+👉 Divide and conquer → repeatedly halve the array.
+
+Best Case: O(1) (if middle element is the answer)
+
+Worst Case: O(log n)
+
+Average Case: O(log n)
+
+✅ Example:
+
+int binarySearch(int[] arr, int key) {
+    int low = 0, high = arr.length - 1;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == key) return mid;
+        else if (arr[mid] < key) low = mid + 1;
+        else high = mid - 1;
+    }
+    return -1;
+}
+
+🔹 4. Insertion in Array
+
+Two scenarios:
+
+At the end (if space available) → O(1)
+
+At the beginning or middle → shift elements → O(n)
+
+✅ Example:
+Insert 25 at index 2 in {10, 20, 30, 40}
+
+Must shift {30, 40} to right.
+
+Shifting takes O(n).
+
+🔹 5. Deletion in Array
+
+Two scenarios:
+
+At the end → O(1)
+
+At beginning/middle → shift elements left → O(n)
+
+✅ Example:
+Delete element at index 1 from {10, 20, 30, 40}
+
+Must shift {30, 40} left.
+
+O(n)
+
+🔹 6. Sorting in Array
+
+Sorting needs comparisons + swaps.
+
+Bubble Sort, Selection Sort, Insertion Sort → O(n²)
+
+Merge Sort, Quick Sort (best/avg) → O(n log n)
+
+Quick Sort (worst) → O(n²)
+
+✅ Example (Bubble Sort):
+
+void bubbleSort(int[] arr) {
+    for (int i = 0; i < arr.length-1; i++) {
+        for (int j = 0; j < arr.length-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+Time Complexity: O(n²)
+
+📊 Summary Table of Array Operations
+Operation	Best Case	Worst Case	Example
+Access	O(1)	O(1)	arr[i]
+Traversal	O(n)	O(n)	Loop through array
+Linear Search	O(1)	O(n)	Unsorted array search
+Binary Search	O(1)	O(log n)	Sorted array search
+Insertion (end)	O(1)	O(1)	Push element at end
+Insertion (any)	O(n)	O(n)	Insert in middle
+Deletion (end)	O(1)	O(1)	Remove last element
+Deletion (any)	O(n)	O(n)	Remove from middle
+Sorting (Bubble)	O(n)	O(n²)	Repeated swaps
+Sorting (Merge)	O(n log n)	O(n log n)	Divide & merge
